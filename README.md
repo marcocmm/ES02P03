@@ -1,13 +1,13 @@
 # ES02P03
 
-- Rômulo Manciola Meloca
-Gerente do Projeto
+Rômulo Manciola Meloca
+*Gerente do Projeto*
 
-- Marco Cezar Moreira de Mattos
-- - Analista do projeto
+Marco Cezar Moreira de Mattos
+*Analista do projeto*
 
-- Mateus Yonemoto
-- - Programador
+Mateus Yonemoto
+*Programador*
 
-- Leonardo Pontes
-- - Testador
+Leonardo Pontes
+*Testador*
