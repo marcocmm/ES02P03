@@ -7,16 +7,20 @@ package br.com.memorial.model.usuario;
 
 import br.com.memorial.model.memorial.Memorial;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author mateus
  */
+@Entity
 public class Usuario {
     
     private String nome;
     private Date dataNasc;
     private String sexo;
+    @Id
     private String cpf;
     private String rg;
     private Endereco enderecoPessoal;
