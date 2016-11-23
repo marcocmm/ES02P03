@@ -10,14 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="LoggableServlet" method="post">            
-            <input placeholder="login" name="login"/>
-            <input placeholder="senha" name="senha"/>
-            <button type="submit" >Entrar</button>
+        <form action="LoggableServlet" method="post" class="pure-form">
+            <fieldset>
+                <legend>Login</legend>
+                <input type="text" name="login" placeholder="Login">
+                <input type="password" name="senha" placeholder="Senha">
+                <button type="submit" class="pure-button pure-button-primary">Entrar</button>
+            </fieldset>
         </form>
-        <a href="cadastraUsuario.jsp"/>Cadastro</a>
-    </body>
+
+        <a href="cadastraUsuario.jsp"/>Cadastrar</a>
+</body>
 </html>

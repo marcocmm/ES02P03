@@ -9,6 +9,6 @@ package br.com.memorial.model.memorial;
  *
  * @author mateus
  */
-enum FormacaoAcademica {
+public enum FormacaoAcademica {
     ENSINO_FUNDAMENTAL, ENSINO_MEDIO, ENSINO_SUPERIOR, RESIDENCIA_MEDICA, ESPECIALIZACAO, POS_GRADUACAO, MESTRADO, DOUTORADO;
 }

@@ -5,6 +5,7 @@
  */
 package br.com.memorial.model.memorial;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author mateus
  */
-class Atividade {
+public class Atividade implements Serializable{
     
     private Date dataInicial;
     private Date dataFinal;

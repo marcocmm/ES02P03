@@ -5,16 +5,30 @@
  */
 package br.com.memorial.model.memorial;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 /**
  *
  * @author mateus
  */
-public class Memorial {
-    
+@Entity
+public class Memorial implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long idAtividade;
     private FormacaoAcademica formacaoAcademica;
-    private List<Atividade> atividade;
+    @ElementCollection
+    @CollectionTable(name = "atividades", joinColumns = @JoinColumn(name = "idAtividade"))
+    private List<Atividade> atividades;
 
     public FormacaoAcademica getFormacaoAcademica() {
         return formacaoAcademica;
@@ -24,12 +38,20 @@ public class Memorial {
         this.formacaoAcademica = formacaoAcademica;
     }
 
-    public List<Atividade> getAtividade() {
-        return atividade;
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 
-    public void setAtividade(List<Atividade> atividade) {
-        this.atividade = atividade;
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
     }
-    
+
+    public Long getIdAtividade() {
+        return idAtividade;
+    }
+
+    public void setIdAtividade(Long idAtividade) {
+        this.idAtividade = idAtividade;
+    }
+
 }

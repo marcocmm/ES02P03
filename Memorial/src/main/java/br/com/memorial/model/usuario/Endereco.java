@@ -5,12 +5,14 @@
  */
 package br.com.memorial.model.usuario;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mateus
  */
-public class Endereco {
-    
+public class Endereco implements Serializable{
+   
     private String unidadeFederativa;
     private String logradouro;
     private String numero;

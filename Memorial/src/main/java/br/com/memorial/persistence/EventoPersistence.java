@@ -5,21 +5,16 @@
  */
 package br.com.memorial.persistence;
 
-import java.util.List;
+import br.com.memorial.model.memorial.Evento;
 
 /**
  *
  * @author mateus
  */
-public interface Persistence<T> {
+public class EventoPersistence extends GenericDAO<Evento>{
+
+    public EventoPersistence() {
+        super(Evento.class);
+    }
     
-    public boolean insert(T entity);
-
-    public boolean update(T entity);
-
-    public void delete(T entity);
-    
-    public T obter(T entity);
-
-    public List<T> list();
 }

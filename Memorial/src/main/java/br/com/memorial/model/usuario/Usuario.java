@@ -6,25 +6,29 @@
 package br.com.memorial.model.usuario;
 
 import br.com.memorial.model.memorial.Memorial;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author mateus
  */
 @Entity
-public class Usuario {
-    
+public class Usuario implements Serializable {
+
     private String nome;
+    @Temporal(TemporalType.DATE)
     private Date dataNasc;
     private String sexo;
-    @Id
     private String cpf;
     private String rg;
     private Endereco enderecoPessoal;
     private Endereco enderecoProfissional;
+    @Id
     private String login;
     private String senha;
     private Memorial memorial;
@@ -108,6 +112,17 @@ public class Usuario {
     public void setMemorial(Memorial memorial) {
         this.memorial = memorial;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Usuario)) {
+            return false;
+        }
+        Usuario usuario = (Usuario) obj;
+        if (!this.cpf.equals(usuario.login)) {
+            return false;
+        }
+        return true;
+    }
+
 }

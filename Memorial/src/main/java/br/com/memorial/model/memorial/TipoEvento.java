@@ -9,6 +9,6 @@ package br.com.memorial.model.memorial;
  *
  * @author mateus
  */
-enum TipoEvento {
+public enum TipoEvento {
     OUVINTE, APRESENTANDO_TRABALHO, ORGANIZACAO, PALESTRANTE, INSTRUTOR, SECRETARIO;
 }

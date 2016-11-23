@@ -5,10 +5,16 @@
  */
 package br.com.memorial.controller;
 
+import br.com.memorial.persistence.UsuarioPersistence;
+
 /**
  *
  * @author mateus
  */
-public class UsuarioController extends Controller{
-    
+public class UsuarioController extends Controller {
+
+    public UsuarioController() {
+        this.setPersistence(new UsuarioPersistence());
+    }
+
 }

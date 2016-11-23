@@ -5,12 +5,23 @@
  */
 package br.com.memorial.model.memorial;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author mateus
  */
-public class Evento extends Atividade{
-    
+@Entity
+public class Evento implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String nomeEvento;
     private TipoEvento tipo;
 
@@ -29,5 +40,13 @@ public class Evento extends Atividade{
     public void setTipo(TipoEvento tipo) {
         this.tipo = tipo;
     }
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

@@ -5,10 +5,17 @@
  */
 package br.com.memorial.persistence;
 
+import br.com.memorial.model.memorial.Memorial;
+
 /**
  *
  * @author mateus
  */
-public class MemorialPersistence extends SerializePersistence{
+public class MemorialPersistence extends GenericDAO<Memorial>{
+    
+    public MemorialPersistence() {
+        super(Memorial.class);
+    }
+
     
 }

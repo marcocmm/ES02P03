@@ -5,30 +5,32 @@
  */
 package br.com.memorial.persistence;
 
-import java.util.Collection;
+import java.sql.SQLException;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author mateus
  */
-public class SerializePersistence implements Persistence<SerializePersistence>{
+public abstract class GenericDAO<T>{
     
-    private Collection<SerializePersistence> itens;
-    public static EntityManager entityManager = javax.persistence.Persistence.createEntityManagerFactory("UP").createEntityManager();
+    public static EntityManager entityManager = Persistence.createEntityManagerFactory("UP").createEntityManager();
     private Class clazz;
+
+    public GenericDAO(Class clazz) {
+        this.clazz = clazz;
+    }
     
-    @Override
-    public boolean insert(SerializePersistence entity) {
+   public boolean insert(T entity) throws SQLException{ 
         entityManager.getTransaction().begin();
         entityManager.persist(entity);
         entityManager.getTransaction().commit();
         return true;
     }
 
-    @Override
-    public boolean update(SerializePersistence entity) {
+    public boolean update(T entity) {
         try {
             entityManager.getTransaction().begin();
             entityManager.merge(entity);
@@ -39,8 +41,7 @@ public class SerializePersistence implements Persistence<SerializePersistence>{
         return true;
     }
 
-    @Override
-    public void delete(SerializePersistence entity) {
+    public void delete(T entity) {
         if (entity != null) {
             entityManager.getTransaction().begin();
             entityManager.remove(entity);
@@ -48,14 +49,18 @@ public class SerializePersistence implements Persistence<SerializePersistence>{
         }
     }
 
-    @Override
-    public SerializePersistence obter(SerializePersistence entity) {
+    public T obter(int id) {
         entityManager.clear();
-        return (SerializePersistence) entityManager.find(clazz, entity);
+        return (T) entityManager.find(clazz, id);
     }
 
-    @Override
-    public List<SerializePersistence> list() {
+    public T obter(T entity) {
+        entityManager.clear();
+        return (T) entityManager.find(clazz, entity);
+    }
+
+    public List<T> list() {
         return entityManager.createQuery("SELECT e FROM " + clazz.getSimpleName() + " e").getResultList();
     }
+    
 }
