@@ -110,7 +110,6 @@ public class UsuarioServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("data: " + dataNasc);
         response.sendRedirect("index.jsp");
 
     }

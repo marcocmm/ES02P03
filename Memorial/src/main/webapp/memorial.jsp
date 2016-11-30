@@ -13,11 +13,9 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     </head>
     <body>
-        <form method ="post" action="MemorialServlet" >
-              <button class="pure-button">Alterar Cadastro</button>
-              <button class="pure-button">Registrar Memorial</button>
+            <a href="alterarCadastro.jsp"/>Alterar Cadastro</a>
+            <a href="registrarMemorial.jsp"/>Registrar Memorial</a>
               <button class="pure-button">Anexar Documentos</button>
               <button class="pure-button">Gerar Histórico</button>
-        </form>
     </body>
 </html>

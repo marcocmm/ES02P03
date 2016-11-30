@@ -5,7 +5,20 @@
  */
 package br.com.memorial.servlets;
 
+import br.com.memorial.model.memorial.AtividadeDiversa;
+import br.com.memorial.model.memorial.Evento;
+import br.com.memorial.model.memorial.FormacaoAcademica;
+import br.com.memorial.model.memorial.Memorial;
+import br.com.memorial.model.memorial.TipoAtividade;
+import br.com.memorial.model.memorial.TipoEvento;
+import br.com.memorial.persistence.AtividadePersistence;
+import br.com.memorial.persistence.EventoPersistence;
+import br.com.memorial.persistence.MemorialPersistence;
+import br.com.memorial.persistence.UsuarioPersistence;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +67,46 @@ public class MemorialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("alterarCadastro.jsp");
+            String formacao = request.getParameter("formacaoAcademica");
+            String atividade = request.getParameter("atividades");
+            String evento = request.getParameter("eventos");
+            
+            Memorial memorial = new Memorial();
+            AtividadeDiversa atividadeDiversa = new AtividadeDiversa();
+            Evento event = new Evento();
+            
+            FormacaoAcademica form = FormacaoAcademica.valueOf(formacao);
+            memorial.setFormacaoAcademica(form);
+            
+            TipoAtividade ativ = TipoAtividade.valueOf(atividade);
+            atividadeDiversa.setTipo(ativ);
+            
+            TipoEvento ev = TipoEvento.valueOf(evento);
+            event.setTipo(ev);
+            
+            MemorialPersistence mp = new MemorialPersistence();
+            EventoPersistence ep = new EventoPersistence();
+            AtividadePersistence ap = new AtividadePersistence();
+            
+            try {
+                mp.insert(memorial);
+            } catch (SQLException ex) {
+                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+            
+            try {
+                ep.insert(event);
+            } catch (SQLException ex) {
+                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            try {
+                ap.insert(atividadeDiversa);
+            } catch (SQLException ex) {
+                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            response.sendRedirect("memorial.jsp");
     }
 
     /**
