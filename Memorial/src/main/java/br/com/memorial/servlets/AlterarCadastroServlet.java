@@ -9,6 +9,7 @@ import br.com.memorial.model.usuario.Endereco;
 import br.com.memorial.model.usuario.Usuario;
 import br.com.memorial.persistence.UsuarioPersistence;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,13 +21,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author mateus
  */
-@WebServlet(name = "UsuarioServlet", urlPatterns = {"/UsuarioServlet"})
-public class UsuarioServlet extends HttpServlet {
+@WebServlet(name = "AlterarCadastroServlet", urlPatterns = {"/AlterarCadastroServlet"})
+public class AlterarCadastroServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,6 +39,7 @@ public class UsuarioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -105,13 +108,12 @@ public class UsuarioServlet extends HttpServlet {
         user.setSenha(senha);
         
         UsuarioPersistence up = new UsuarioPersistence();
-        try {
-            up.insert(user);
-        } catch (SQLException ex) {
-            Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("data: " + dataNasc);
-        response.sendRedirect("index.jsp");
+        up.update(user);
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("usuario", user);
+        
+        response.sendRedirect("memorial.jsp");
 
     }
 
