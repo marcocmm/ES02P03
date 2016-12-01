@@ -5,12 +5,14 @@
  */
 package br.com.memorial.servlets;
 
+import br.com.memorial.model.memorial.Atividade;
 import br.com.memorial.model.memorial.AtividadeDiversa;
 import br.com.memorial.model.memorial.Evento;
 import br.com.memorial.model.memorial.FormacaoAcademica;
 import br.com.memorial.model.memorial.Memorial;
 import br.com.memorial.model.memorial.TipoAtividade;
 import br.com.memorial.model.memorial.TipoEvento;
+import br.com.memorial.model.usuario.Usuario;
 import br.com.memorial.persistence.AtividadePersistence;
 import br.com.memorial.persistence.EventoPersistence;
 import br.com.memorial.persistence.MemorialPersistence;
@@ -24,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -84,27 +87,12 @@ public class MemorialServlet extends HttpServlet {
             TipoEvento ev = TipoEvento.valueOf(evento);
             event.setTipo(ev);
             
-            MemorialPersistence mp = new MemorialPersistence();
-            EventoPersistence ep = new EventoPersistence();
-            AtividadePersistence ap = new AtividadePersistence();
+            HttpSession session = request.getSession();
+            Object user = session.getAttribute("usuario");
+            ((Usuario) user).setMemorial(memorial);
             
-            try {
-                mp.insert(memorial);
-            } catch (SQLException ex) {
-                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }   
-            
-            try {
-                ep.insert(event);
-            } catch (SQLException ex) {
-                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            try {
-                ap.insert(atividadeDiversa);
-            } catch (SQLException ex) {
-                Logger.getLogger(MemorialServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            UsuarioPersistence up = new UsuarioPersistence();
+            up.update((Usuario)user);
             
             response.sendRedirect("memorial.jsp");
     }

@@ -5,12 +5,19 @@
  */
 package br.com.memorial.model.memorial;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author mateus
  */
-class Anexo {
-    
+@Entity
+public class Anexo {
+    @Id
+    @GeneratedValue
+    private int id;
     private String nome;
     private String caminho;
 

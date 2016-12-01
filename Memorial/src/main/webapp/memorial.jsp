@@ -15,7 +15,7 @@
     <body>
             <a href="alterarCadastro.jsp"/>Alterar Cadastro</a>
             <a href="registrarMemorial.jsp"/>Registrar Memorial</a>
-              <button class="pure-button">Anexar Documentos</button>
+            <a href="anexarDocumento.jsp"/>Anexar Documentos</a>
               <button class="pure-button">Gerar Histórico</button>
     </body>
 </html>

@@ -97,20 +97,20 @@ public class AlterarCadastroServlet extends HttpServlet {
         } catch (ParseException ex) {
             Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        HttpSession session = request.getSession();
+        user  = (Usuario) session.getAttribute("usuario");
         user.setNome(nome);
         user.setSexo(sexo);
         user.setCpf(cpf);
         user.setRg(rg);
         user.setEnderecoPessoal(end);
         user.setEnderecoProfissional(end2);
-        user.setLogin(login);
+//        user.setLogin(login);
         user.setSenha(senha);
         
         UsuarioPersistence up = new UsuarioPersistence();
         up.update(user);
         
-        HttpSession session = request.getSession();
         session.setAttribute("usuario", user);
         
         response.sendRedirect("memorial.jsp");
