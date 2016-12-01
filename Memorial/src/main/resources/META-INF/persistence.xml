@@ -5,6 +5,7 @@
     <class>br.com.memorial.model.memorial.Evento</class>
     <class>br.com.memorial.model.memorial.Memorial</class>
     <class>br.com.memorial.model.usuario.Usuario</class>
+    <class>br.com.memorial.model.memorial.Anexo</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>

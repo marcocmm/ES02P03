@@ -27,9 +27,9 @@ public class Memorial implements Serializable {
     private Long idAtividade;
     private FormacaoAcademica formacaoAcademica;
     @ElementCollection
-    @CollectionTable(name = "atividades", joinColumns = @JoinColumn(name = "idAtividade"))
+    @CollectionTable
     private List<Atividade> atividades;
-
+    
     public FormacaoAcademica getFormacaoAcademica() {
         return formacaoAcademica;
     }

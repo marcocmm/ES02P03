@@ -14,7 +14,7 @@ import javax.persistence.Entity;
  *
  * @author mateus
  */
-public class Atividade implements Serializable{
+public abstract class Atividade implements Serializable{
     
     private Date dataInicial;
     private Date dataFinal;

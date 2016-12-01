@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author mateus
  */
 @Entity
-public class Evento implements Serializable{
+public class Evento extends Atividade{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

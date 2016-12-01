@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.memorial.model.memorial;
+package br.com.memorial.persistence;
+
+import br.com.memorial.model.memorial.Anexo;
 
 /**
  *
  * @author mateus
  */
-public enum TipoOrientacao {
-    APERFEICOAMENTO_E_ESPECIALIZACAO, INICIACAO_CIENTIFICA, MESTRADO, DOUTORADO, POS_DOUTORADO;
+public class AnexoPersistence extends GenericDAO<Anexo>{
+    
+    public AnexoPersistence() {
+        super(Anexo.class);
+    }
+    
 }

@@ -6,6 +6,8 @@
 package br.com.memorial.servlets;
 
 import br.com.memorial.model.memorial.Anexo;
+import br.com.memorial.persistence.AnexoPersistence;
+import br.com.memorial.persistence.UsuarioPersistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -73,11 +75,14 @@ public class AnexarDocumentoServlet extends HttpServlet {
                 FileItemFactory factory = new DiskFileItemFactory();
                 ServletFileUpload upload = new ServletFileUpload(factory);
                 try {
-                    FileItem item = (FileItem) upload.parseRequest(request);
-                if(item.isFormField()){
+                    List<FileItem> items = upload.parseRequest(request);
+                int i = 0;
+                for(FileItem item : items){
+                    i++;
+                    if(item.isFormField()){
                     itemForm = item.getString();
                 } else{
-                    String caminho = getServletContext().getRealPath("/arquivos");
+                    String caminho = getServletContext().getRealPath("");
                     String n = item.getName();
                     String nome = n.replace(" ","_");
                     File uploadedFile = new File(caminho + "/" + nome);
@@ -85,10 +90,12 @@ public class AnexarDocumentoServlet extends HttpServlet {
                     Anexo anexo = new Anexo();
                     anexo.setNome(nome);
                     anexo.setCaminho(caminho2);
-                    
+
+                        AnexoPersistence ap = new AnexoPersistence();
                     if(!new File(caminho2).exists()){
                         try {
                             item.write(uploadedFile);
+                            ap.insert(anexo);
                         } catch (Exception ex) {
                             Logger.getLogger(AnexarDocumentoServlet.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -99,6 +106,7 @@ public class AnexarDocumentoServlet extends HttpServlet {
                         dis.forward(request, response);
                     }
                 }
+                }
                 } catch (FileUploadException ex) {
                     request.setAttribute("mensagem2", "Ocorreu um erro!");
                         RequestDispatcher dis = request.getRequestDispatcher("anexarDocumento.jsp");
@@ -106,7 +114,8 @@ public class AnexarDocumentoServlet extends HttpServlet {
                     Logger.getLogger(AnexarDocumentoServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 request.setAttribute("mensagem", "Upload do arquivo realizado com sucesso!");
-                
+                RequestDispatcher dis = request.getRequestDispatcher("anexarDocumento.jsp");
+                        dis.forward(request, response);
             }
     }
 

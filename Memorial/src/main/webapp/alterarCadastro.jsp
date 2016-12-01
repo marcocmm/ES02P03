@@ -83,6 +83,7 @@
                 </div>
 
                 <button type="submit" class="pure-button pure-button-primary">Finalizar</button>
+                <a href="memorial.jsp"/>Voltar</a>
             </fieldset>
         </form>
     </body>

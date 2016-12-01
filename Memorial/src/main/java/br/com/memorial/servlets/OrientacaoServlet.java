@@ -5,22 +5,12 @@
  */
 package br.com.memorial.servlets;
 
-import br.com.memorial.model.memorial.Atividade;
-import br.com.memorial.model.memorial.AtividadeDiversa;
-import br.com.memorial.model.memorial.Evento;
-import br.com.memorial.model.memorial.FormacaoAcademica;
-import br.com.memorial.model.memorial.Memorial;
-import br.com.memorial.model.memorial.TipoAtividade;
-import br.com.memorial.model.memorial.TipoEvento;
+import br.com.memorial.model.memorial.Orientacao;
+import br.com.memorial.model.memorial.TipoOrientacao;
 import br.com.memorial.model.usuario.Usuario;
-import br.com.memorial.persistence.AtividadePersistence;
-import br.com.memorial.persistence.EventoPersistence;
-import br.com.memorial.persistence.MemorialPersistence;
-import br.com.memorial.persistence.UsuarioPersistence;
+import br.com.memorial.persistence.OrientacaoPersistence;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mateus
  */
-@WebServlet(name = "MemorialServlet", urlPatterns = {"/MemorialServlet"})
-public class MemorialServlet extends HttpServlet {
+@WebServlet(name = "OrientacaoServlet", urlPatterns = {"/OrientacaoServlet"})
+public class OrientacaoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,6 +34,9 @@ public class MemorialServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+  
+        
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -70,33 +63,19 @@ public class MemorialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String formacao = request.getParameter("formacaoAcademica");
-            String atividade = request.getParameter("atividades");
-            String evento = request.getParameter("eventos");
+            String orientacao = request.getParameter("orientacao");
             
-            Memorial memorial = new Memorial();
-            AtividadeDiversa atividadeDiversa = new AtividadeDiversa();
-            Evento event = new Evento();
+            Orientacao orient = new Orientacao();
             
-            FormacaoAcademica form = FormacaoAcademica.valueOf(formacao);
-            memorial.setFormacaoAcademica(form);
-            
-            TipoAtividade ativ = TipoAtividade.valueOf(atividade);
-            atividadeDiversa.setTipo(ativ);
-            
-            TipoEvento ev = TipoEvento.valueOf(evento);
-            event.setTipo(ev);
+            TipoOrientacao or = TipoOrientacao.valueOf(orientacao);
+            orient.setTipo(or);
             
             HttpSession session = request.getSession();
             Object user = session.getAttribute("usuario");
-            ((Usuario) user).setMemorial(memorial);
-//            ((Usuario) user).getMemorial().setAtividadeDiversa(atividadeDiversa);
-            
-            
-            UsuarioPersistence up = new UsuarioPersistence();
-            up.update((Usuario)user);
-            
-            response.sendRedirect("memorial.jsp");
+//            ((Usuario) user).getMemorial().
+//                    
+//            OrientacaoPersistence op = new OrientacaoPersistence();
+//            op.
     }
 
     /**
