@@ -9,8 +9,8 @@ package br.com.memorial.model.memorial;
  *
  * @author mateus
  */
-public class AtividadeDiversa extends Atividade{
-    
+public class AtividadeDiversa extends Atividade {
+
     private String instituicao;
     private String ocupacao;
     private TipoAtividade tipo;

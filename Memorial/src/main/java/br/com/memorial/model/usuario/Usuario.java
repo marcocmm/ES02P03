@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,7 +32,13 @@ public class Usuario implements Serializable {
     @Id
     private String login;
     private String senha;
+    @OneToOne
     private Memorial memorial;
+
+    public Usuario(){
+        this.memorial = new Memorial();
+    }
+    
 
     public String getNome() {
         return nome;

@@ -14,10 +14,16 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     </head>
     <body>
-        <form method="post" class="pure-form pure-form-stacked" action="MemorialServlet">
+        <form method="post" class="pure-form pure-form-stacked" action="AtividadeServlet">
             <fieldset>
                 <legend>Memorial</legend>
 
+                <label>Instituição:</label>
+                <input type="text" name="instituicao" maxlength="50" /><br/><br/>
+  
+                <label>Ocupação:</label>
+                <input type="text" name="ocupacao" maxlength="50" /><br/><br/>
+                
                 <label for="atividades">Atividades</label>
                 <select name="atividades">
                     <option value="<%=TipoAtividade.ATIVIDADES_PROFISSIONAIS%>"> Atividades Profissionais</option>

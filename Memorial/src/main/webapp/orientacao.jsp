@@ -14,11 +14,16 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     </head>
     <body>
-        <form method="post" class="pure-form pure-form-stacked" action="MemorialServlet">
+        <form method="post" class="pure-form pure-form-stacked" action="OrientacaoServlet">
             <fieldset>
                 <legend>Memorial</legend>
 
+                <label>Orientador:</label>
+                <input type="text" name="orientador" maxlength="50" /><br/><br/>
 
+                <label>Orientando:</label>
+                <input type="text" name="orientando" maxlength="50" /><br/><br/>
+                
                 <label for="orientacao">Orientação</label>
                 <select name="orientacao">
                     <option value="<%=TipoOrientacao.APERFEICOAMENTO_E_ESPECIALIZACAO%>"> Aperfeiçoamento e Especialização</option>

@@ -8,14 +8,13 @@ package br.com.memorial.model.memorial;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Entity;
 
 /**
  *
  * @author mateus
  */
-public abstract class Atividade implements Serializable{
-    
+public abstract class Atividade implements Serializable {
+
     private Date dataInicial;
     private Date dataFinal;
     private String detalhes;
@@ -52,5 +51,5 @@ public abstract class Atividade implements Serializable{
     public void setAnexos(List<Anexo> anexos) {
         this.anexos = anexos;
     }
-    
+
 }

@@ -5,6 +5,7 @@
  */
 package br.com.memorial.servlets;
 
+import br.com.memorial.model.memorial.Memorial;
 import br.com.memorial.model.usuario.Endereco;
 import br.com.memorial.model.usuario.Usuario;
 import br.com.memorial.persistence.UsuarioPersistence;

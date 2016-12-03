@@ -14,10 +14,13 @@
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     </head>
     <body>
-        <form method="post" class="pure-form pure-form-stacked" action="MemorialServlet">
+        <form method="post" class="pure-form pure-form-stacked" action="EventoServlet">
             <fieldset>
                 <legend>Memorial</legend>
 
+                <label>Nome evento:</label>
+                <input type="text" name="nomeEvento" maxlength="50" /><br/><br/>
+                
                 <label for="eventos">Eventos</label>
                 <select name="eventos">
                     <option value="<%=TipoEvento.OUVINTE%>"> Ouvinte</option>

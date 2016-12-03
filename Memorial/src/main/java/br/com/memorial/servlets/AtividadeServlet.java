@@ -5,10 +5,11 @@
  */
 package br.com.memorial.servlets;
 
-import br.com.memorial.model.memorial.Evento;
-import br.com.memorial.model.memorial.TipoEvento;
+import br.com.memorial.model.memorial.AtividadeDiversa;
+import br.com.memorial.model.memorial.TipoAtividade;
 import br.com.memorial.model.usuario.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mateus
  */
-@WebServlet(name = "EventoServlet", urlPatterns = {"/EventoServlet"})
-public class EventoServlet extends HttpServlet {
+@WebServlet(name = "AtividadeServlet", urlPatterns = {"/AtividadeServlet"})
+public class AtividadeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,6 +34,7 @@ public class EventoServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
    
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -59,18 +61,19 @@ public class EventoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String evento = request.getParameter("eventos");
-        String nome = request.getParameter("nomeEvento");
-        
-        Evento event = new Evento();
-        TipoEvento ev = TipoEvento.valueOf(evento);
-        event.setTipo(ev);
-        event.setNomeEvento(nome);
-        
-        HttpSession session = request.getSession();
-        Object user = session.getAttribute("usuario");
-        ((Usuario) user).getMemorial().addAtividade(event);
-
+            String atividade = request.getParameter("atividades");
+            String instituicao = request.getParameter("instituicao");
+            String ocupacao = request.getParameter("ocupacao");
+            
+            AtividadeDiversa atividadeDiversa = new AtividadeDiversa();
+            TipoAtividade ativ = TipoAtividade.valueOf(atividade);
+            atividadeDiversa.setInstituicao(instituicao);
+            atividadeDiversa.setOcupacao(ocupacao);
+            
+            HttpSession session = request.getSession();
+            Object user = session.getAttribute("usuario");
+            
+            ((Usuario) user).getMemorial().addAtividade(atividadeDiversa);
     }
 
     /**

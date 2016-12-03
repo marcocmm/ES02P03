@@ -20,7 +20,7 @@
             <input type="text" name="arquivo" maxlength="50" /><br/><br/>
             <input type="file" name="arquivo"  /><br/><br/>
             <input type="submit" value="Enviar" />
-            <a href="memorial.jsp"/>Voltar</a>
+            <a href="registrarMemorial.jsp"/>Voltar</a>
         </form>
         <%
                         AnexoPersistence ap = new AnexoPersistence();

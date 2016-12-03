@@ -70,28 +70,13 @@ public class MemorialServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String formacao = request.getParameter("formacaoAcademica");
-            String atividade = request.getParameter("atividades");
-            String evento = request.getParameter("eventos");
             
             Memorial memorial = new Memorial();
-            AtividadeDiversa atividadeDiversa = new AtividadeDiversa();
-            Evento event = new Evento();
-            
-            FormacaoAcademica form = FormacaoAcademica.valueOf(formacao);
-            memorial.setFormacaoAcademica(form);
-            
-            TipoAtividade ativ = TipoAtividade.valueOf(atividade);
-            atividadeDiversa.setTipo(ativ);
-            
-            TipoEvento ev = TipoEvento.valueOf(evento);
-            event.setTipo(ev);
             
             HttpSession session = request.getSession();
             Object user = session.getAttribute("usuario");
             ((Usuario) user).setMemorial(memorial);
-//            ((Usuario) user).getMemorial().setAtividadeDiversa(atividadeDiversa);
-            
+             
             
             UsuarioPersistence up = new UsuarioPersistence();
             up.update((Usuario)user);

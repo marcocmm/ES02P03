@@ -5,22 +5,11 @@
  */
 package br.com.memorial.model.memorial;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
  * @author mateus
  */
-@Entity
-public class Evento extends Atividade{
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Evento extends Atividade {
 
     private String nomeEvento;
     private TipoEvento tipo;
@@ -39,14 +28,6 @@ public class Evento extends Atividade{
 
     public void setTipo(TipoEvento tipo) {
         this.tipo = tipo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 }

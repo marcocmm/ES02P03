@@ -64,18 +64,20 @@ public class OrientacaoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String orientacao = request.getParameter("orientacao");
+            String orientador = request.getParameter("orientador");
+            String orientando = request.getParameter("orientando");
             
             Orientacao orient = new Orientacao();
             
             TipoOrientacao or = TipoOrientacao.valueOf(orientacao);
             orient.setTipo(or);
+            orient.setOrientador(orientador);
+            orient.setOrientando(orientando);
             
             HttpSession session = request.getSession();
             Object user = session.getAttribute("usuario");
-//            ((Usuario) user).getMemorial().
-//                    
-//            OrientacaoPersistence op = new OrientacaoPersistence();
-//            op.
+
+            ((Usuario) user).getMemorial().addAtividade(orient);
     }
 
     /**

@@ -9,8 +9,8 @@ package br.com.memorial.model.memorial;
  *
  * @author mateus
  */
-public class Orientacao extends Atividade{
-    
+public class Orientacao extends Atividade {
+
     private String orientador;
     private String orientando;
     private TipoOrientacao tipo;
@@ -38,5 +38,5 @@ public class Orientacao extends Atividade{
     public void setTipo(TipoOrientacao tipo) {
         this.tipo = tipo;
     }
-    
+
 }
