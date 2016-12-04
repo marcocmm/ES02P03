@@ -87,6 +87,7 @@ public class AnexarDocumentoServlet extends HttpServlet {
                     String nome = n.replace(" ","_");
                     File uploadedFile = new File(caminho + "/" + nome);
                     String caminho2 = uploadedFile.getAbsolutePath();
+                    nome = request.getParameter("nomeArquivo");
                     Anexo anexo = new Anexo();
                     anexo.setNome(nome);
                     anexo.setCaminho(caminho2);

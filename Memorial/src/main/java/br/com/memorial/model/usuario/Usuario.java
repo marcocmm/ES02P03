@@ -8,6 +8,7 @@ package br.com.memorial.model.usuario;
 import br.com.memorial.model.memorial.Memorial;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -32,7 +33,7 @@ public class Usuario implements Serializable {
     @Id
     private String login;
     private String senha;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Memorial memorial;
 
     public Usuario(){

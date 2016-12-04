@@ -67,6 +67,7 @@ public class AtividadeServlet extends HttpServlet {
             
             AtividadeDiversa atividadeDiversa = new AtividadeDiversa();
             TipoAtividade ativ = TipoAtividade.valueOf(atividade);
+            atividadeDiversa.setTipo(ativ);
             atividadeDiversa.setInstituicao(instituicao);
             atividadeDiversa.setOcupacao(ocupacao);
             
@@ -74,6 +75,8 @@ public class AtividadeServlet extends HttpServlet {
             Object user = session.getAttribute("usuario");
             
             ((Usuario) user).getMemorial().addAtividade(atividadeDiversa);
+    
+            response.sendRedirect("registrarMemorial.jsp");
     }
 
     /**

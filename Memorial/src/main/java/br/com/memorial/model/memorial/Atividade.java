@@ -6,6 +6,7 @@
 package br.com.memorial.model.memorial;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,10 @@ public abstract class Atividade implements Serializable {
     private Date dataFinal;
     private String detalhes;
     private List<Anexo> anexos;
+    
+    public Atividade(){
+        this.anexos = new ArrayList<>();
+    }
 
     public Date getDataInicial() {
         return dataInicial;

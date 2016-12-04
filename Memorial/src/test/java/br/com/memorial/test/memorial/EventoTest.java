@@ -22,7 +22,6 @@ public class EventoTest {
     Evento ev;
     EventoPersistence ep;
 
-    @Test
     public void testeInsereEvento() {
         ep = new EventoPersistence();
         ev = new Evento();

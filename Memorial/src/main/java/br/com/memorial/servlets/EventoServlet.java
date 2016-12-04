@@ -70,7 +70,8 @@ public class EventoServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Object user = session.getAttribute("usuario");
         ((Usuario) user).getMemorial().addAtividade(event);
-
+        
+        response.sendRedirect("registrarMemorial.jsp");
     }
 
     /**

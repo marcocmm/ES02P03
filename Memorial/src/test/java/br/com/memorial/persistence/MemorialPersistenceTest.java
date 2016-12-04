@@ -27,7 +27,6 @@ public class MemorialPersistenceTest {
     public MemorialPersistenceTest() {
     }
 
-    @Test
     public void testSomeMethod() throws FileNotFoundException, IOException {
         Endereco endereco = new Endereco();
         endereco.setLogradouro("asdfgg");
@@ -39,7 +38,6 @@ public class MemorialPersistenceTest {
         stream.close();
     }
 
-    @Test
     public void outro() throws FileNotFoundException, IOException, ClassNotFoundException {
         InputStream inputStream = new FileInputStream(new File("/home/mateus/meuarquivo.laplace"));
         ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);

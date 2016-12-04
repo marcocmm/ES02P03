@@ -16,5 +16,8 @@
             <a href="alterarCadastro.jsp"/>Alterar Cadastro</a>
             <a href="registrarMemorial.jsp"/>Registrar Memorial</a>
             <a href="gerarHistorico.jsp"/>Gerar Histórico</a>
+        <form action="DeslogarServlet" method="post" >
+            <button type="submit" >Sair</button>
+        </form>
     </body>
 </html>

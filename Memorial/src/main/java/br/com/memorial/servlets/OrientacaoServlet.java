@@ -78,6 +78,8 @@ public class OrientacaoServlet extends HttpServlet {
             Object user = session.getAttribute("usuario");
 
             ((Usuario) user).getMemorial().addAtividade(orient);
+            
+            response.sendRedirect("registrarMemorial.jsp");
     }
 
     /**

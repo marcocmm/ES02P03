@@ -5,10 +5,6 @@
  */
 package br.com.memorial.servlets;
 
-import br.com.memorial.model.memorial.FormacaoAcademica;
-import br.com.memorial.model.memorial.Memorial;
-import br.com.memorial.model.usuario.Usuario;
-import br.com.memorial.persistence.UsuarioPersistence;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author mateus
  */
-@WebServlet(name = "FormacaoAcademicaServlet", urlPatterns = {"/FormacaoAcademicaServlet"})
-public class FormacaoAcademicaServlet extends HttpServlet {
+@WebServlet(name = "DeslogarServlet", urlPatterns = {"/DeslogarServlet"})
+public class DeslogarServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +30,6 @@ public class FormacaoAcademicaServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,21 +57,10 @@ public class FormacaoAcademicaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String formacao = request.getParameter("formacaoAcademica");
-            
-            Memorial memorial = new Memorial();
-            
-            FormacaoAcademica form = FormacaoAcademica.valueOf(formacao);
-            memorial.setFormacaoAcademica(form);
-            
-            HttpSession session = request.getSession();
-            Object user = session.getAttribute("usuario");
-            ((Usuario) user).setMemorial(memorial);
-            
-            UsuarioPersistence up = new UsuarioPersistence();
-            up.update((Usuario) user);
-            
-            response.sendRedirect("registrarMemorial.jsp");
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("usuario");
+        response.sendRedirect("index.jsp");
     }
 
     /**

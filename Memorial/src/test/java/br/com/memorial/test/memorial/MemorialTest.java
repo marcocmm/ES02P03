@@ -19,7 +19,6 @@ public class MemorialTest {
     Memorial memorial;
     MemorialPersistence mp;
 
-    @Test
     public void testeMemorialInsere() {
         memorial = new Memorial();
         mp = new MemorialPersistence();
